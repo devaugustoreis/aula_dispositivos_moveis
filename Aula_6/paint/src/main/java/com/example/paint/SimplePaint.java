@@ -12,28 +12,52 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class SimplePaint extends View {
 
-    Path myPath;
-    Paint myPaint;
+    private Path myPath;
+    private  Paint myPaint;
+
+    ArrayList<Path> allPaths;
+    ArrayList<Paint> allPaints;
 
     public SimplePaint(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        addLayer(Color.BLACK);
+    }
 
+    public void addLayer(int color){
         myPaint = new Paint();
         myPath = new Path();
+        allPaints.add(myPaint);
+        allPaths.add(myPath);
+        setup(color);
+    }
 
-        myPaint.setColor(Color.BLACK);
-        myPaint.setStrokeWidth(6f);
+
+    public void setup (int color){
+        myPaint = allPaints.get(allPaints.size() - 1);
+        myPaint.setColor(color);
+        myPaint.setStrokeWidth(10f);
         myPaint.setAntiAlias(true);
         myPaint.setStyle(Paint.Style.STROKE);
+    }
+
+
+    public void setColor(int color){
+        // myPaint.setColor(color);
+        addLayer(color);
     }
 
 
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawPath(myPath, myPaint);
+
+        for (Path path : allPaths) {
+            canvas.drawPath(path, myPaint);
+        }
     }
 
 
@@ -46,13 +70,16 @@ public class SimplePaint extends View {
             case MotionEvent.ACTION_DOWN:
                 myPath.moveTo(x, y);
                 invalidate();
-                break;
+                return true;
             case MotionEvent.ACTION_MOVE:
                 myPath.lineTo(x, y);
                 invalidate();
-                break;
+                return true;
             case MotionEvent.ACTION_UP:
                 break;
+            default:
+                invalidate();
+                return true;
         }
 
         return super.onTouchEvent(event);
