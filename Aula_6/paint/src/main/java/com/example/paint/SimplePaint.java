@@ -17,46 +17,58 @@ import java.util.ArrayList;
 public class SimplePaint extends View {
 
     private Path myPath;
-    private  Paint myPaint;
+    private Paint myPaint;
 
     ArrayList<Path> allPaths;
     ArrayList<Paint> allPaints;
 
     public SimplePaint(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        addLayer(Color.BLACK);
+        allPaths = new ArrayList<Path>();
+        allPaints = new ArrayList<Paint>();
+        addLayer(Color.BLACK, 10f);
+
     }
 
-    public void addLayer(int color){
+    public void addLayer(int color, float strokeWidth){
         myPaint = new Paint();
         myPath = new Path();
         allPaints.add(myPaint);
         allPaths.add(myPath);
-        setup(color);
+        setup(color, strokeWidth);
     }
 
-
-    public void setup (int color){
-        myPaint = allPaints.get(allPaints.size() - 1);
+    public void setup (int color, float strokeWidth){
         myPaint.setColor(color);
-        myPaint.setStrokeWidth(10f);
+        myPaint.setStrokeWidth(strokeWidth);
         myPaint.setAntiAlias(true);
         myPaint.setStyle(Paint.Style.STROKE);
     }
 
-
     public void setColor(int color){
-        // myPaint.setColor(color);
-        addLayer(color);
+        Paint currentPaint = allPaints.get(allPaints.size() - 1);
+        float strokeWidth = currentPaint.getStrokeWidth();
+        addLayer(color, strokeWidth);
+    }
+
+    public void setStrokeWidth(int stroke) {
+        Paint currentPaint = allPaints.get(allPaints.size() - 1);
+        int color = currentPaint.getColor();
+        addLayer(color, stroke);
+    }
+
+    public void cleanPaint() {
+        allPaths.clear();
     }
 
 
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
-
+        int i=0;
         for (Path path : allPaths) {
-            canvas.drawPath(path, myPaint);
+            i++;
+            canvas.drawPath(path, allPaints.get(i - 1));
         }
     }
 
