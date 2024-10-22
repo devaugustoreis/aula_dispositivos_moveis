@@ -10,7 +10,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app/listagem" />
+            <option value="$PROJECT_DIR$/listagem" />
             <option value="$PROJECT_DIR$/paint" />
+            <option value="$PROJECT_DIR$/paint/listagem" />
             <option value="$PROJECT_DIR$/paint/paint_refeito" />
             <option value="$PROJECT_DIR$/paint_refeito" />
             <option value="$PROJECT_DIR$/paint_refeito2" />

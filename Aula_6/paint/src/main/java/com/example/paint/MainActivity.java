@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -15,9 +16,15 @@ import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button;
-    Button cleanBtn;
     SimplePaint simplePaint;
+
+    ImageButton colorPickerButton;
+    ImageButton fingerBtn;
+    ImageButton squareBtn;
+    ImageButton circleBtn;
+    ImageButton backBtn;
+    ImageButton clearBtn;
+
     SeekBar seekBar;
     TextView tvStrokeWidth;
 
@@ -25,16 +32,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         simplePaint = findViewById(R.id.simplePaint);
+
+        colorPickerButton = findViewById(R.id.colorPickerBtn);
+        fingerBtn = findViewById(R.id.fingerBtn);
+        squareBtn = findViewById(R.id.squareBtn);
+        circleBtn = findViewById(R.id.circleBtn);
+        backBtn = findViewById(R.id.backBtn);
+        clearBtn = findViewById(R.id.clearBtn);
+
         seekBar = findViewById(R.id.seekBar);
+        seekBar.setProgress(10);
         seekBar.setMin(0);
         seekBar.setMax(100);
-        button = findViewById(R.id.button);
-        cleanBtn = findViewById(R.id.limparBtn);
 
         tvStrokeWidth = findViewById(R.id.tvStrokeWidth);
+        tvStrokeWidth.setText("10");
 
-        button.setOnClickListener(new View.OnClickListener() {
+
+        colorPickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -62,6 +79,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        fingerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+
+        squareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+
+        circleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                simplePaint.backAction();
+            }
+        });
+
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -80,7 +127,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cleanBtn.setOnClickListener(new View.OnClickListener() {
+
+        clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 simplePaint.cleanPaint();

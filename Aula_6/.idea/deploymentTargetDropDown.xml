@@ -2,13 +2,24 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="MainActivity">
+        <State />
+      </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="app.listagem">
+        <State />
+      </entry>
+      <entry key="listagem">
         <State />
       </entry>
       <entry key="paint">
         <State />
       </entry>
-
+      <entry key="paint.listagem">
+        <State />
+      </entry>
       <entry key="paint_refeito2">
         <State />
       </entry>

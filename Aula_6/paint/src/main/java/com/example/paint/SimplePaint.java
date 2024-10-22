@@ -57,8 +57,19 @@ public class SimplePaint extends View {
         addLayer(color, stroke);
     }
 
+
+    public void backAction() {
+        allPaints.remove(allPaints.size() - 1);
+        allPaths.remove(allPaths.size() - 1);
+        invalidate();
+    }
+
+
     public void cleanPaint() {
+        allPaints.clear();
         allPaths.clear();
+        invalidate();
+        addLayer(Color.BLACK, 10f);
     }
 
 
