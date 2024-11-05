@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class PlanetasAdapter extends ArrayAdapter<Planeta> {
+
     public PlanetasAdapter(@NonNull Context context, int resource, @NonNull List<Planeta> objects) {
         super(context, resource, objects);
     }
