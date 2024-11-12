@@ -10,11 +10,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/app/listagem" />
-            <option value="$PROJECT_DIR$/listagem" />
             <option value="$PROJECT_DIR$/listagem_launcher" />
+            <option value="$PROJECT_DIR$/listagem_planetas" />
+            <option value="$PROJECT_DIR$/listagem_primeira" />
             <option value="$PROJECT_DIR$/paint" />
-            <option value="$PROJECT_DIR$/paint_refeito2" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

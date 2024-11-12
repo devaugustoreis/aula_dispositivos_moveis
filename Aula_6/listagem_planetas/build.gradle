@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace 'com.example.listagem_launcher'
+    namespace 'com.ifsc.listagem_planetas'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.listagem_launcher"
-        minSdk 24
+        applicationId "com.ifsc.listagem_planetas"
+        minSdk 26
         targetSdk 34
         versionCode 1
         versionName "1.0"

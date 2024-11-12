@@ -11,6 +11,15 @@
       <entry key="listagem">
         <State />
       </entry>
+      <entry key="listagem_launcher">
+        <State />
+      </entry>
+      <entry key="listagem_planetas">
+        <State />
+      </entry>
+      <entry key="listagem_primeira">
+        <State />
+      </entry>
       <entry key="paint">
         <State />
       </entry>

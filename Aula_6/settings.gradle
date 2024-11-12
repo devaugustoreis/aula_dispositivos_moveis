@@ -15,7 +15,6 @@ dependencyResolutionManagement {
 rootProject.name = "Aula_6"
 include ':app'
 include ':paint'
-include ':paint_refeito2'
-include ':app:listagem'
-include ':listagem'
+include ':listagem_primeira'
 include ':listagem_launcher'
+include ':listagem_planetas'

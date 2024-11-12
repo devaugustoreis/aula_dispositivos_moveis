@@ -2,6 +2,7 @@ package com.example.listagem_launcher;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.ResolveInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,13 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class AppAdapter extends ArrayAdapter<ApplicationInfo> {
-    public AppAdapter(@NonNull MainActivity mainActivity, int item_lista, @NonNull List<ApplicationInfo> packageInfoList) {
+public class AppAdapter extends ArrayAdapter<ResolveInfo> {
+
+    int myResource;
+
+    public AppAdapter(@NonNull MainActivity mainActivity, int item_lista, @NonNull List<ResolveInfo> packageInfoList) {
         super(mainActivity, item_lista, packageInfoList);
+        myResource = item_lista;
     }
 
 
@@ -28,18 +33,18 @@ public class AppAdapter extends ArrayAdapter<ApplicationInfo> {
 
         // Inflando layout do item da lista
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View view = inflater.inflate(R.layout.item_lista, parent, false);
+        View view = inflater.inflate(myResource, parent, false);
 
         //Recuperando o objeto ApplicationInfo da posição atual
-        ApplicationInfo applicationInfo = getItem(position);
+        ResolveInfo resolveInfo = getItem(position);
 
         //Recuperando os componentes do layout
         TextView textViewAppName = view.findViewById(R.id.app_name);
         ImageView imageViewAppIcon = view.findViewById(R.id.app_icon);
 
         //Setando os valores nos componentes
-        imageViewAppIcon.setImageDrawable(applicationInfo.loadIcon(getContext().getPackageManager()));
-        textViewAppName.setText(applicationInfo.loadLabel(getContext().getPackageManager()));
+        imageViewAppIcon.setImageDrawable(resolveInfo.loadIcon(getContext().getPackageManager()));
+        textViewAppName.setText(resolveInfo.loadLabel(getContext().getPackageManager()));
         return view;
     }
 

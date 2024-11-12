@@ -20,6 +20,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    List<ExecutableApplication> executableApps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,17 +36,7 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.listview_apps);
 
         PackageManager packageManager = getPackageManager();
-        if (packageManager == null) {
-            Toast.makeText(this, "Erro: PackageManager não disponível", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         List<ApplicationInfo> packageInfoList = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
-        if (packageInfoList == null || packageInfoList.isEmpty()) {
-            Toast.makeText(this, "Nenhum aplicativo encontrado", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
 
         /* Cria um Intent com a ação ACTION_MAIN, que é usada para filtrar aplicativos
         que tenham uma atividade principal. O segundo argumento null indica que não há
@@ -53,17 +45,17 @@ public class MainActivity extends AppCompatActivity {
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         List<ResolveInfo> appList = packageManager.queryIntentActivities(mainIntent, 0);
 
-        AppAdapter appAdapter = new AppAdapter(this,R.layout.item_lista, packageInfoList);
+        AppAdapter appAdapter = new AppAdapter(this,R.layout.item_lista, appList);
         listView.setAdapter(appAdapter);
 
         // Adicionando o listener de clique para cada item da lista
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ApplicationInfo applicationInfo = (ApplicationInfo) parent.getItemAtPosition(position);
-                String packageName = applicationInfo.packageName;
+                ResolveInfo resolveInfo = (ResolveInfo) parent.getItemAtPosition(position);
+                String packageName = resolveInfo.activityInfo.packageName;
 
-                Toast.makeText(MainActivity.this, "Abrindo: " + applicationInfo.loadLabel(packageManager), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Abrindo: " + resolveInfo.loadLabel(packageManager), Toast.LENGTH_SHORT).show();
 
                 Intent intent = packageManager.getLaunchIntentForPackage(packageName);
                 if (intent != null) {
