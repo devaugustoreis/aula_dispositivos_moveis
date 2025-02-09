@@ -10,14 +10,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="?"
         android:textColor="#FF2525"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText1"
+        app:layout_constraintTop_toBottomOf="@+id/editTextInicial"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Button"
+        android:text="Sortear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -33,29 +33,28 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editText1"
-        android:layout_width="101dp"
-        android:layout_height="51dp"
+        android:id="@+id/editTextInicial"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="Inicial"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/editTextFinal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="96dp"
+        android:id="@+id/editTextFinal"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:ems="10"
         android:hint="Final"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editText1"
-        tools:layout_editor_absoluteY="212dp" />
+        app:layout_constraintStart_toEndOf="@+id/editTextInicial"
+        app:layout_constraintTop_toTopOf="@+id/editTextInicial" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

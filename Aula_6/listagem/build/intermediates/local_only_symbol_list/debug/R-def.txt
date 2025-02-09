@@ -1,0 +1,29 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable earth
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable jupter
+drawable mars
+drawable mercury
+drawable neptune
+drawable saturn
+drawable sun
+drawable uranus
+drawable venus
+id button
+id editTextText
+id imageView
+id main
+id recyclerView
+id textView
+layout activity_main
+layout activity_main2
+layout item_lista
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.Aula_6
+style Theme.Aula_6

@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_saturn.png.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/saturn.png"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_sun.png.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/sun.png"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_mars.png.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/mars.png"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/layout_activity_main2.xml.flat",
+        "source": "com.ifsc.listagem-main-34:/layout/activity_main2.xml"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_earth.png.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/earth.png"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_venus.png.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/venus.png"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-anydpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_neptune.png.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/neptune.png"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_uranus.png.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/uranus.png"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_mercury.png.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/mercury.png"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/layout_item_lista.xml.flat",
+        "source": "com.ifsc.listagem-main-34:/layout/item_lista.xml"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-anydpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.ifsc.listagem-main-34:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/layout_activity_main.xml.flat",
+        "source": "com.ifsc.listagem-main-34:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.ifsc.listagem-merged_res-32:/drawable_jupter.png.flat",
+        "source": "com.ifsc.listagem-main-34:/drawable/jupter.png"
+    }
+]

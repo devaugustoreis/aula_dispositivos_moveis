@@ -18,27 +18,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-            btnA = findViewById(R.id.btnClickA);
-            btnB = findViewById(R.id.btnClickB);
-            EditText et = findViewById(R.id.editText);
+        btnA = findViewById(R.id.btnClickA);
+        btnB = findViewById(R.id.btnClickB);
+        EditText et = findViewById(R.id.editText);
 
-            btnA.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
-                    String mensagem = et.getText().toString();
-                    intent.putExtra("msg", mensagem);
-                    startActivity(intent);
-                }
-            });
+        btnA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                String mensagem = et.getText().toString();
+                intent.putExtra("msg", mensagem);
+                startActivity(intent);
+            }
+        });
 
-            btnB.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
-                    startActivity(intent);
-                }
-            });
+        btnB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                startActivity(intent);
+            }
+        });
 
         Log.d("Ciclo de Vida", "passou pelo onCreate");
     }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1" >
+
+    <TableRow>
+        <TextView
+            android:id="@+id/textViewAlimento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Alimento Exemplo"
+            android:textSize="14sp"
+            android:textColor="#00008B"
+            android:layout_weight="1"
+            android:padding="4dp" />
+
+        <TextView
+            android:id="@+id/textViewCategoria"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Categoria Exemplo"
+            android:textSize="14sp"
+            android:textColor="#00008B"
+            android:layout_weight="1"
+            android:padding="4dp" />
+
+        <TextView
+            android:id="@+id/textViewPreparo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Preparo Exemplo"
+            android:textSize="14sp"
+            android:textColor="#00008B"
+            android:layout_weight="1"
+            android:padding="4dp" />
+
+        <TextView
+            android:id="@+id/textViewDado1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Dado 1 Exemplo"
+            android:textSize="14sp"
+            android:textColor="#00008B"
+            android:layout_weight="0.7"
+            android:padding="4dp" />
+    </TableRow>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#80191968" />
+
+</android.widget.TableLayout>

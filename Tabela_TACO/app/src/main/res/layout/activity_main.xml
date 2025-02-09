@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C1C1FF"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/AppTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Tabela Nutricional TACO"
+        android:textColor="#00008B"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cabecalhoAlimento" />
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AppTitle">
+
+        <RadioButton
+            android:id="@+id/radioButtonLipidios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lípidios"
+            android:textColor="#00008B"
+            android:textStyle="bold"
+            app:buttonTint="#00008B"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonMacros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Macros"
+            android:textColor="#00008B"
+            android:textStyle="bold"
+            app:buttonTint="#00008B" />
+
+        <RadioButton
+            android:id="@+id/radioButtonMinerais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minerais"
+            android:textColor="#00008B"
+            android:textStyle="bold"
+            app:buttonTint="#00008B" />
+
+        <RadioButton
+            android:id="@+id/radioButtonVitaminas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vitaminas"
+            android:textColor="#00008B"
+            android:textStyle="bold"
+            app:buttonTint="#00008B" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/cabecalhoAlimento"
+        android:layout_width="0dp"
+        android:minHeight="36dp"
+        android:layout_height="wrap_content"
+        android:background="#2121A0"
+        android:breakStrategy="simple"
+        android:ellipsize="none"
+        android:gravity="center"
+        android:paddingStart="15dp"
+        android:scrollHorizontally="false"
+        android:text="Alimento"
+        android:textColor="#ADD8E6"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/cabecalhoCategoria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputBuscar"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <TextView
+        android:id="@+id/cabecalhoCategoria"
+        android:layout_width="0dp"
+        android:minHeight="36dp"
+        android:layout_height="wrap_content"
+        android:background="#2121A0"
+        android:breakStrategy="simple"
+        android:ellipsize="none"
+        android:gravity="center"
+        android:scrollHorizontally="false"
+        android:text="Categoria"
+        android:textColor="#ADD8E6"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/cabecalhoPreparo"
+        app:layout_constraintStart_toEndOf="@+id/cabecalhoAlimento"
+        app:layout_constraintTop_toBottomOf="@+id/inputBuscar"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <TextView
+        android:id="@+id/cabecalhoPreparo"
+        android:layout_width="0dp"
+        android:minHeight="36dp"
+        android:layout_height="wrap_content"
+        android:background="#2121A0"
+        android:breakStrategy="simple"
+        android:ellipsize="none"
+        android:gravity="center"
+        android:scrollHorizontally="false"
+        android:text="Preparo"
+        android:textColor="#ADD8E6"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/cabecalhoDado1"
+        app:layout_constraintStart_toEndOf="@+id/cabecalhoCategoria"
+        app:layout_constraintTop_toBottomOf="@+id/inputBuscar"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <TextView
+        android:id="@+id/cabecalhoDado1"
+        android:layout_width="0dp"
+        android:minHeight="36dp"
+        android:layout_height="wrap_content"
+        android:background="#2121A0"
+        android:breakStrategy="simple"
+        android:ellipsize="none"
+        android:gravity="center"
+        android:paddingEnd="15dp"
+        android:scrollHorizontally="false"
+        android:text="Dado 1"
+        android:textColor="#ADD8E6"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerView"
+        app:layout_constraintStart_toEndOf="@+id/cabecalhoPreparo"
+        app:layout_constraintTop_toBottomOf="@+id/inputBuscar"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <TextView
+        android:id="@+id/labelBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pesquisar: "
+        android:textColor="#00008B"
+        android:textSize="14sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/cabecalhoAlimento"
+        app:layout_constraintEnd_toStartOf="@+id/inputBuscar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <EditText
+        android:id="@+id/inputBuscar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00008B"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:textColor="#00008B"
+        android:textSize="14sp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/labelBuscar"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
