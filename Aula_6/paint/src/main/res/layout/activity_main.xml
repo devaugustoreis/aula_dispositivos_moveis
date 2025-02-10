@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".MainActivity">
 
     <com.example.paint.SimplePaint
@@ -14,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintTop_toBottomOf="@+id/tvStrokeWidth" />
 
     <ImageButton
         android:id="@+id/colorPickerBtn"
@@ -36,9 +37,22 @@
         android:scaleType="fitCenter"
         android:src="@drawable/finger"
         app:layout_constraintBottom_toTopOf="@+id/simplePaint"
-        app:layout_constraintEnd_toStartOf="@+id/squareBtn"
+        app:layout_constraintEnd_toStartOf="@+id/lineBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/colorPickerBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/lineBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/line"
+        app:layout_constraintBottom_toTopOf="@+id/simplePaint"
+        app:layout_constraintEnd_toStartOf="@+id/squareBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fingerBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -51,7 +65,7 @@
         app:layout_constraintBottom_toTopOf="@+id/simplePaint"
         app:layout_constraintEnd_toStartOf="@+id/circleBtn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fingerBtn"
+        app:layout_constraintStart_toEndOf="@+id/lineBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -107,8 +121,12 @@
     <TextView
         android:id="@+id/tvStrokeWidth"
         android:layout_width="wrap_content"
-        android:layout_height="14dp"
+        android:layout_height="wrap_content"
         android:text="0"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/colorPickerBtn" />
 

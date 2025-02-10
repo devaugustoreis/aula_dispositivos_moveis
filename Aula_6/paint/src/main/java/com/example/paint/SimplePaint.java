@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,73 +17,105 @@ import java.util.ArrayList;
 
 public class SimplePaint extends View {
 
-    private Path myPath;
-    private Paint myPaint;
+    enum DrawingMode { LIVRE, LINHA, RETANGULO, CIRCULO }
 
-    ArrayList<Path> allPaths;
-    ArrayList<Paint> allPaints;
+    private DrawingMode drawingMode = DrawingMode.LIVRE;
+    private Layer currentLayer;
+    private Layer previewLayer;
+    private ArrayList<Layer> arrayLayers;
+    private int currentColor = Color.BLACK;
+    private float currentStrokeWidth = 10f;
+    private float startX, startY;
+
 
     public SimplePaint(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        allPaths = new ArrayList<Path>();
-        allPaints = new ArrayList<Paint>();
-        addLayer(Color.BLACK, 10f);
-
+        arrayLayers = new ArrayList<>();
+        addLayer(currentColor, currentStrokeWidth);
     }
 
-    public void addLayer(int color, float strokeWidth){
-        myPaint = new Paint();
-        myPath = new Path();
-        allPaints.add(myPaint);
-        allPaths.add(myPath);
-        setup(color, strokeWidth);
+    public void addLayer(int color, float strokeWidth) {
+        currentLayer = new Layer(color, strokeWidth);
+        arrayLayers.add(currentLayer);
     }
 
-    public void setup (int color, float strokeWidth){
-        myPaint.setColor(color);
-        myPaint.setStrokeWidth(strokeWidth);
-        myPaint.setAntiAlias(true);
-        myPaint.setStyle(Paint.Style.STROKE);
+    public void setColor(int color) {
+        currentColor = color;
+        if (currentLayer != null) {
+            currentLayer.getPaint().setColor(currentColor);
+        }
     }
 
-    public void setColor(int color){
-        Paint currentPaint = allPaints.get(allPaints.size() - 1);
-        float strokeWidth = currentPaint.getStrokeWidth();
-        addLayer(color, strokeWidth);
+    public void setStrokeWidth(int strokeWidth) {
+        currentStrokeWidth = strokeWidth;
+        if (currentLayer != null) {
+            currentLayer.getPaint().setStrokeWidth(currentStrokeWidth);
+        }
     }
 
-    public void setStrokeWidth(int stroke) {
-        Paint currentPaint = allPaints.get(allPaints.size() - 1);
-        int color = currentPaint.getColor();
-        addLayer(color, stroke);
+    public void setDrawingMode(DrawingMode mode) {
+        this.drawingMode = mode;
     }
-
 
     public void backAction() {
-        allPaints.remove(allPaints.size() - 1);
-        allPaths.remove(allPaths.size() - 1);
-        invalidate();
+        if (!arrayLayers.isEmpty()) {
+            arrayLayers.remove(arrayLayers.size() - 1);
+
+            if (!arrayLayers.isEmpty()) {
+                currentLayer = arrayLayers.get(arrayLayers.size() - 1);
+            } else {
+                addLayer(currentColor, currentStrokeWidth);
+            }
+
+            invalidate();
+        }
     }
 
-
-    public void cleanPaint() {
-        allPaints.clear();
-        allPaths.clear();
+    public void clearPaint() {
+        arrayLayers.clear();
         invalidate();
-        addLayer(Color.BLACK, 10f);
+        addLayer(currentColor, currentStrokeWidth);
     }
-
 
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
-        int i=0;
-        for (Path path : allPaths) {
-            i++;
-            canvas.drawPath(path, allPaints.get(i - 1));
+
+        for (Layer layer : arrayLayers) {
+            if (layer.isSquare()) {
+                canvas.drawRect(layer.getRectangle(), layer.getPaint());
+
+            } else if (layer.isLine()) {
+                canvas.drawLine(layer.getStartX(), layer.getStartY(), layer.getEndX(), layer.getEndY(), layer.getPaint());
+
+            } else if (layer.isCircle()) {
+                canvas.drawCircle(layer.getCenterX(), layer.getCenterY(), layer.getRadius(), layer.getPaint());
+
+            } else {
+                canvas.drawPath(layer.getPath(), layer.getPaint());
+            }
+        }
+
+        if (previewLayer != null) {
+            Paint dashedPaint = new Paint(previewLayer.getPaint());
+            dashedPaint.setStyle(Paint.Style.STROKE);
+            dashedPaint.setStrokeWidth(3);
+            dashedPaint.setColor(Color.GRAY);
+
+            if (previewLayer.isSquare()) {
+                canvas.drawRect(previewLayer.getRectangle(), previewLayer.getPaint());
+
+            } else if (previewLayer.isLine()) {
+                canvas.drawLine(previewLayer.getStartX(), previewLayer.getStartY(), previewLayer.getEndX(), previewLayer.getEndY(), previewLayer.getPaint());
+
+            } else if (previewLayer.isCircle()) {
+                canvas.drawCircle(previewLayer.getCenterX(), previewLayer.getCenterY(), previewLayer.getRadius(), previewLayer.getPaint());
+
+            } else {
+                canvas.drawPath(previewLayer.getPath(), previewLayer.getPaint());
+            }
         }
     }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -91,20 +124,65 @@ public class SimplePaint extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                myPath.moveTo(x, y);
-                invalidate();
-                return true;
-            case MotionEvent.ACTION_MOVE:
-                myPath.lineTo(x, y);
-                invalidate();
-                return true;
-            case MotionEvent.ACTION_UP:
-                break;
-            default:
-                invalidate();
-                return true;
-        }
+                startX = x;
+                startY = y;
 
-        return super.onTouchEvent(event);
+                previewLayer = new Layer(currentColor, currentStrokeWidth);
+
+                if (drawingMode == DrawingMode.LIVRE) {
+                    previewLayer.getPath().moveTo(x, y);
+                }
+
+                invalidate();
+                return true;
+
+            case MotionEvent.ACTION_MOVE:
+                if (previewLayer == null) return false;
+
+                if (drawingMode == DrawingMode.LIVRE) {
+                    previewLayer.getPath().lineTo(x, y);
+
+                } else if (drawingMode == DrawingMode.LINHA) {
+                    previewLayer.setLine(startX, startY, x, y);
+
+                } else if (drawingMode == DrawingMode.RETANGULO) {
+                    previewLayer.setRectangle(startX, startY, x, y);
+
+                } else if (drawingMode == DrawingMode.CIRCULO) {
+                    float radius = (float) Math.sqrt(Math.pow(x - startX, 2) + Math.pow(y - startY, 2));
+                    previewLayer.setCircle(startX, startY, radius);
+                }
+
+                invalidate();
+                return true;
+
+            case MotionEvent.ACTION_UP:
+                if (previewLayer != null) {
+                    Layer finalLayer = new Layer(currentColor, currentStrokeWidth);
+
+                    if (drawingMode == DrawingMode.LIVRE) {
+                        finalLayer.getPath().set(previewLayer.getPath());
+
+                    } else if (drawingMode == DrawingMode.LINHA) {
+                        finalLayer.setLine(previewLayer.getStartX(), previewLayer.getStartY(), previewLayer.getEndX(), previewLayer.getEndY());
+
+                    } else if (drawingMode == DrawingMode.RETANGULO) {
+                        finalLayer.setRectangle(previewLayer.getRectangle().left, previewLayer.getRectangle().top, previewLayer.getRectangle().right, previewLayer.getRectangle().bottom);
+
+                    } else if (drawingMode == DrawingMode.CIRCULO) {
+                        finalLayer.setCircle(previewLayer.getCenterX(), previewLayer.getCenterY(), previewLayer.getRadius());
+                    }
+
+                    arrayLayers.add(finalLayer);
+                    previewLayer = null;
+                }
+
+                invalidate();
+                return true;
+
+            default:
+                return super.onTouchEvent(event);
+        }
     }
+
 }

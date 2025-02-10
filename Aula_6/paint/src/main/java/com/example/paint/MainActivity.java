@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton colorPickerButton;
     ImageButton fingerBtn;
+    ImageButton lineBtn;
     ImageButton squareBtn;
     ImageButton circleBtn;
     ImageButton backBtn;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         colorPickerButton = findViewById(R.id.colorPickerBtn);
         fingerBtn = findViewById(R.id.fingerBtn);
+        lineBtn = findViewById(R.id.lineBtn);
         squareBtn = findViewById(R.id.squareBtn);
         circleBtn = findViewById(R.id.circleBtn);
         backBtn = findViewById(R.id.backBtn);
@@ -83,6 +85,15 @@ public class MainActivity extends AppCompatActivity {
         fingerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                simplePaint.setDrawingMode(SimplePaint.DrawingMode.LIVRE);
+            }
+        });
+
+
+        lineBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                simplePaint.setDrawingMode(SimplePaint.DrawingMode.LINHA);
             }
         });
 
@@ -90,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         squareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                simplePaint.setDrawingMode(SimplePaint.DrawingMode.RETANGULO);
             }
         });
 
@@ -97,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         circleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                simplePaint.setDrawingMode(SimplePaint.DrawingMode.CIRCULO);
             }
         });
 
@@ -104,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 simplePaint.backAction();
             }
         });
@@ -131,12 +145,13 @@ public class MainActivity extends AppCompatActivity {
         clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                simplePaint.cleanPaint();
+                simplePaint.clearPaint();
             }
         });
     }
 
     public void setColor(ColorEnvelope envelope) {
+
         simplePaint.setColor(envelope.getColor());
     }
 }
